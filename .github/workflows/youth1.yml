@@ -30,7 +30,7 @@ jobs:
           YOUTH_HEADER: ${{ secrets.YOUTH_HEADER1 }}
           YOUTH_ARTBODY: ${{ secrets.YOUTH_ARTBODY1 }}
           YOUTH_REDBODY: ${{ secrets.YOUTH_REDBODY1 }}
-          YOUTH_TIME: ${{ secrets.YOUTH_TIME }}
+          YOUTH_TIME: ${{ secrets.YOUTH_TIME1 }}
           YOUTH_NOTIFY_CONTROL: ${{ secrets.YOUTH_NOTIFY_CONTROL }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
