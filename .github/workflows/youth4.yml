@@ -38,5 +38,3 @@ jobs:
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
           BARK_SOUND: ${{ secrets.BARK_SOUND }}
 
-
-    
