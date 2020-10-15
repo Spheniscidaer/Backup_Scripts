@@ -18,8 +18,7 @@ jobs:
       YOUTH_READ2: ${{ secrets.YOUTH_READ312 }}
       YOUTH_READ3: ${{ secrets.YOUTH_READ321 }}
       YOUTH_READ4: ${{ secrets.YOUTH_READ322 }}
-      YOUTH_READ5: ${{ secrets.YOUTH_READ331 }}
-
+     
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js 10.x
@@ -57,10 +56,4 @@ jobs:
           node Task/Youth_Read.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ322 }}
-         
-      - name: '运行 【中青看点自动阅读五】'
-        if: env.YOUTH_READ5
-        run: |
-          node Task/Youth_Read.js
-        env:
-          YOUTH_READ: ${{ secrets.YOUTH_READ331 }}
+ 
