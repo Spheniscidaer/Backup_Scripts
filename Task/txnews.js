@@ -130,9 +130,12 @@ if (isGetCookie) {
       };
       await getTotal();
       await showmsg();
-    if ($.isNode()&&readnum%notifyInterval==0&&Total_Earn.data.wealth[1].title > 2){
+    if ($.isNode()){
+       if (readnum%notifyInterval==0&&Total_Earn.data.wealth[1].title > 2){
      await notify.sendNotify($.name,subTile+'\n'+detail)
-   }
+       }
+     }
+    }
   })()
       .catch((e) => $.logErr(e))
       .finally(() => $.done())
