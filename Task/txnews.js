@@ -56,14 +56,20 @@ let SignArr = [],SignUrl = "";
     
 
 if ($.isNode()) {
-  if (process.env.TXNEWS_COOKIE && process.env.TXNEWS_COOKIE.split('&') && process.env.TXNEWS_COOKIE.split('&').length > 0) {
-  CookieTxnews = process.env.TXNEWS_COOKIE.split('&');
-  }
- if (process.env.TXNEWS_SIGN && process.env.TXNEWS_SIGN.split('#') && process.env.TXNEWS_SIGN.split('#').length > 0) {
+  if (process.env.TXNEWS_COOKIE && process.env.TXNEWS_COOKIE.indexOf('&') > -1) {
+      CookieTxnews = process.env.TXNEWS_COOKIE.split('&');
+  } else {
+      CookieTxnews = process.env.TXNEWS_COOKIE.split()
+  };
+  if (process.env.TXNEWS_SIGN && process.env.TXNEWS_SIGN.indexOf('#') > -1) {
   SignUrl = process.env.TXNEWS_SIGN.split('#');
-  }
-  if (process.env.TXNEWS_VIDEO && process.env.TXNEWS_VIDEO.split('#') && process.env.TXNEWS_VIDEO.split('#').length > 0) {
+  } else {
+      SignUrl = process.env.TXNEWS_SIGN.split()
+  };
+  if (process.env.TXNEWS_VIDEO && process.env.TXNEWS_VIDEO.indexOf('#') > -1) {
   VideoUrl = process.env.TXNEWS_VIDEO.split('#');
+  } else {
+      VideoUrl = process.env.TXNEWS_VIDEO.split()
   };
     Object.keys(CookieTxnews).forEach((item) => {
         if (CookieTxnews[item]) {
@@ -124,6 +130,8 @@ if (isGetCookie) {
       };
       await getTotal();
       await showmsg();
+    if ($.isNode()&&readnum%notifyInterval==0&&Total_Earn.data.wealth[1].title > 2){
+     await notify.sendNotify($.name,subTile+'\n'+detail)
    }
   })()
       .catch((e) => $.logErr(e))
@@ -296,8 +304,8 @@ function getTotal() {
       if (error) {
         $.msg("获取收益信息失败‼️", "", error)
       } else {
-        const obj = JSON.parse(data)
-        subTile = '【收益总计】'+obj.data.wealth[0].title +'金币  '+"钱包: " +obj.data.wealth[1].title+'元'
+        const Total_Earn = JSON.parse(data)
+        subTile = '【收益总计】'+Total_Earn.data.wealth[0].title +'金币  '+"钱包: " +Total_Earn.data.wealth[1].title+'元'
      // $.log("钱包收益共计"+obj.data.wealth[1].title+"元")
       }
       resolve()
