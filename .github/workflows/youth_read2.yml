@@ -6,7 +6,7 @@ name: youth_read2
 on:
   workflow_dispatch:
   schedule:
-     - cron: '6 1-6/2 * * *'
+     - cron: '30 1-9/4 * * *'
   watch:
     types: started
 jobs:
@@ -14,10 +14,14 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-      YOUTH_READ1: ${{ secrets.YOUTH_READ211 }}
-      YOUTH_READ2: ${{ secrets.YOUTH_READ212 }}
-      YOUTH_READ3: ${{ secrets.YOUTH_READ221 }}
-      YOUTH_READ4: ${{ secrets.YOUTH_READ222 }}
+      YOUTH_READ1: ${{ secrets.YOUTH_READ311 }}
+      YOUTH_READ2: ${{ secrets.YOUTH_READ312 }}
+      YOUTH_READ3: ${{ secrets.YOUTH_READ321 }}
+      YOUTH_READ4: ${{ secrets.YOUTH_READ322 }}
+      YOUTH_READ5: ${{ secrets.YOUTH_READ411 }}
+      YOUTH_READ6: ${{ secrets.YOUTH_READ412 }}
+      YOUTH_READ7: ${{ secrets.YOUTH_READ421 }}
+      YOUTH_READ8: ${{ secrets.YOUTH_READ422 }}
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js 14.x
@@ -33,25 +37,53 @@ jobs:
         run: |
           node Task/Youth_Read.js
         env:
-          YOUTH_READ: ${{ secrets.YOUTH_READ211 }}
+          YOUTH_READ: ${{ secrets.YOUTH_READ311 }}
 
       - name: '运行 【中青看点自动阅读二】'
         if: env.YOUTH_READ2
         run: |
           node Task/Youth_Read.js
         env:
-          YOUTH_READ: ${{ secrets.YOUTH_READ212 }}
+          YOUTH_READ: ${{ secrets.YOUTH_READ312 }}
           
       - name: '运行 【中青看点自动阅读三】'
         if: env.YOUTH_READ3
         run: |
           node Task/Youth_Read.js
         env:
-          YOUTH_READ: ${{ secrets.YOUTH_READ221 }}
+          YOUTH_READ: ${{ secrets.YOUTH_READ321 }}
           
       - name: '运行 【中青看点自动阅读四】'
         if: env.YOUTH_READ4
         run: |
           node Task/Youth_Read.js
         env:
-          YOUTH_READ: ${{ secrets.YOUTH_READ222 }}
+          YOUTH_READ: ${{ secrets.YOUTH_READ322 }}
+          
+      - name: '运行 【中青看点自动阅读五】'
+        if: env.YOUTH_READ4
+        run: |
+          node Task/Youth_Read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ411 }}
+                    
+      - name: '运行 【中青看点自动阅读六】'
+        if: env.YOUTH_READ4
+        run: |
+          node Task/Youth_Read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ412 }}
+          
+      - name: '运行 【中青看点自动阅读七】'
+        if: env.YOUTH_READ4
+        run: |
+          node Task/Youth_Read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ421 }}
+          
+      - name: '运行 【中青看点自动阅读八】'
+        if: env.YOUTH_READ4
+        run: |
+          node Task/Youth_Read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ422 }}
