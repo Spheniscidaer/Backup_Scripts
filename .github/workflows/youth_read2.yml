@@ -61,28 +61,28 @@ jobs:
           YOUTH_READ: ${{ secrets.YOUTH_READ322 }}
           
       - name: '运行 【中青看点自动阅读五】'
-        if: env.YOUTH_READ4
+        if: env.YOUTH_READ5
         run: |
           node Task/Youth_Read.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ411 }}
                     
       - name: '运行 【中青看点自动阅读六】'
-        if: env.YOUTH_READ4
+        if: env.YOUTH_READ6
         run: |
           node Task/Youth_Read.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ412 }}
           
       - name: '运行 【中青看点自动阅读七】'
-        if: env.YOUTH_READ4
+        if: env.YOUTH_READ7
         run: |
           node Task/Youth_Read.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ421 }}
           
       - name: '运行 【中青看点自动阅读八】'
-        if: env.YOUTH_READ4
+        if: env.YOUTH_READ8
         run: |
           node Task/Youth_Read.js
         env:
