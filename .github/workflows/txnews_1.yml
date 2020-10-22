@@ -4,7 +4,7 @@
 #   branches: 
 #   - master 
 
-name: txnews_1
+name: 腾讯新闻二
 
 on:
   workflow_dispatch:
