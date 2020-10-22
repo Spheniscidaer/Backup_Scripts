@@ -6,7 +6,7 @@ name: midu_read2
 on:
   workflow_dispatch:
   schedule:
-     - cron: '*/7 1-18 * * *'
+     - cron: '2/7 1-18 * * *'
 
 jobs:
   build:
