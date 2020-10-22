@@ -6,7 +6,7 @@ name: youth2
 on:
   workflow_dispatch:
   schedule:
-     - cron: '*/5 * * * *'
+     - cron: '*/2 * * * *'
   watch:
     types: started
 
@@ -15,10 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-        YOUTH_HEADER: ${{ secrets.YOUTH_HEADER2 }}
-        YOUTH_ARTBODY: ${{ secrets.YOUTH_ARTBODY2 }}
-        YOUTH_REDBODY: ${{ secrets.YOUTH_REDBODY2 }}
-        YOUTH_TIME: ${{ secrets.YOUTH_TIME2 }}
+        YOUTH_HEADER: ${{ secrets.YOUTH_HEADER1 }}
+        YOUTH_ARTBODY: ${{ secrets.YOUTH_ARTBODY1 }}
+        YOUTH_REDBODY: ${{ secrets.YOUTH_REDBODY1 }}
+        YOUTH_TIME: ${{ secrets.YOUTH_TIME1 }}
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js 14.x
