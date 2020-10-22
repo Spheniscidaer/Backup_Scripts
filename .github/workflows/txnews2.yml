@@ -4,12 +4,12 @@
 #   branches: 
 #   - master 
 
-name: txnews2
+name: txnews1
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '*/7 * * * *'
+     - cron: '3/7 * * * *'
   watch:
      types: started
     
