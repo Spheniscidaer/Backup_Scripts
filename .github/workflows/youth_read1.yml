@@ -6,11 +6,10 @@ name: youth_read1
 on:
   workflow_dispatch:
   schedule:
-     - cron: '3 1,2,3 * * *'
+     - cron: '3 17,18,19 * * *'
   watch:
     types: started
-env:
-TZ: Asia/Shanghai
+
 jobs:
   build:
     runs-on: ubuntu-latest
