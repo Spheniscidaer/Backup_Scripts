@@ -6,7 +6,7 @@ name: youth_read1
 on:
   workflow_dispatch:
   schedule:
-     - cron: '0 16-18/1 * * *'
+     - cron: '0 17-21/2 * * *'
   watch:
     types: started
 jobs:
@@ -18,6 +18,10 @@ jobs:
       YOUTH_READ2: ${{ secrets.YOUTH_READ112 }}
       YOUTH_READ3: ${{ secrets.YOUTH_READ121 }}
       YOUTH_READ4: ${{ secrets.YOUTH_READ122 }}
+      YOUTH_READ5: ${{ secrets.YOUTH_READ211 }}
+      YOUTH_READ6: ${{ secrets.YOUTH_READ212 }}
+      YOUTH_READ7: ${{ secrets.YOUTH_READ221 }}
+      YOUTH_READ8: ${{ secrets.YOUTH_READ222 }}
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js 14.x
@@ -54,5 +58,32 @@ jobs:
         run: |
           node Task/Youth_Read.js
         env:
-          YOUTH_READ: ${{ secrets.YOUTH_READ122 }}
+          YOUTH_READ: ${{ secrets.YOUTH_READ122 }} 
                 
+      - name: '运行 【中青看点自动阅读五】'
+        if: env.YOUTH_READ5
+        run: |
+          node Task/Youth_Read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ211 }}
+                    
+      - name: '运行 【中青看点自动阅读六】'
+        if: env.YOUTH_READ6
+        run: |
+          node Task/Youth_Read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ212 }}
+          
+      - name: '运行 【中青看点自动阅读七】'
+        if: env.YOUTH_READ7
+        run: |
+          node Task/Youth_Read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ221 }}
+          
+      - name: '运行 【中青看点自动阅读八】'
+        if: env.YOUTH_READ8
+        run: |
+          node Task/Youth_Read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ222 }}
