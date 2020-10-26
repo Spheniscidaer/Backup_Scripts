@@ -35,55 +35,55 @@ jobs:
       - name: '运行 【中青看点自动阅读一】'
         if: env.YOUTH_READ1
         run: |
-          node Task/Youth_Read.js
+          node Task/Youth_Read_backup.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ311 }}
 
       - name: '运行 【中青看点自动阅读二】'
         if: env.YOUTH_READ2
         run: |
-          node Task/Youth_Read.js
+          node Task/Youth_Read_backup.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ312 }}
           
       - name: '运行 【中青看点自动阅读三】'
         if: env.YOUTH_READ3
         run: |
-          node Task/Youth_Read.js
+          node Task/Youth_Read_backup.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ321 }}
           
       - name: '运行 【中青看点自动阅读四】'
         if: env.YOUTH_READ4
         run: |
-          node Task/Youth_Read.js
+          node Task/Youth_Read_backup.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ322 }}
           
       - name: '运行 【中青看点自动阅读五】'
         if: env.YOUTH_READ5
         run: |
-          node Task/Youth_Read.js
+          node Task/Youth_Read_backup.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ411 }}
                     
       - name: '运行 【中青看点自动阅读六】'
         if: env.YOUTH_READ6
         run: |
-          node Task/Youth_Read.js
+          node Task/Youth_Read_backup.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ412 }}
           
       - name: '运行 【中青看点自动阅读七】'
         if: env.YOUTH_READ7
         run: |
-          node Task/Youth_Read.js
+          node Task/Youth_Read_backup.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ421 }}
           
       - name: '运行 【中青看点自动阅读八】'
         if: env.YOUTH_READ8
         run: |
-          node Task/Youth_Read.js
+          node Task/Youth_Read_backup.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ422 }}
