@@ -16,8 +16,8 @@ jobs:
     env:
       YOUTH_READ1: ${{ secrets.YOUTH_READ311 }}
       YOUTH_READ2: ${{ secrets.YOUTH_READ312 }}
-      YOUTH_READ3: ${{ secrets.YOUTH_READ321 }}
-      YOUTH_READ4: ${{ secrets.YOUTH_READ322 }}
+      YOUTH_READ3: ${{ secrets.YOUTH_READ3 }}
+      YOUTH_READ4: ${{ secrets.YOUTH_READ3 }}
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js 14.x
