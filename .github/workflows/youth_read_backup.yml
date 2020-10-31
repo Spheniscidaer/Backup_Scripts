@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-      YOUTH_READ1: ${{ secrets.YOUTH_READ212 }}
+      YOUTH_READ1: ${{ secrets.YOUTH_READ122 }}
       YOUTH_READ2: ${{ secrets.YOUTH_READ222 }}
       YOUTH_READ3: ${{ secrets.YOUTH_READ3 }}
       YOUTH_READ4: ${{ secrets.YOUTH_READ4 }}
@@ -33,7 +33,7 @@ jobs:
         run: |
           node Task/Youth_Read.js
         env:
-          YOUTH_READ: ${{ secrets.YOUTH_READ212 }}
+          YOUTH_READ: ${{ secrets.YOUTH_READ122 }}
 
       - name: '运行 【中青看点自动阅读二】'
         if: env.YOUTH_READ2
