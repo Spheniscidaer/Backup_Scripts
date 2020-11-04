@@ -15,10 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-        YOUTH_HEADER: ${{ secrets.YOUTH_HEADER }}
-        YOUTH_ARTBODY: ${{ secrets.YOUTH_ARTBODY }}
-        YOUTH_REDBODY: ${{ secrets.YOUTH_REDBODY }}
-        YOUTH_TIME: ${{ secrets.YOUTH_TIME }}
+        YOUTH_HEADER: ${{ secrets.YOUTH_HEADER_BACKUP }}
+        YOUTH_ARTBODY: ${{ secrets.YOUTH_ARTBODY_BACKUP }}
+        YOUTH_REDBODY: ${{ secrets.YOUTH_REDBODY_BACKUP }}
+        YOUTH_TIME: ${{ secrets.YOUTH_TIME_BACKUP }}
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js 14.x
