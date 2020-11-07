@@ -47,7 +47,7 @@ const notify = $.isNode() ? require('./sendNotify') : '';
 let sleeping = "",detail=``,subTitle=``;
 let RewardId = $.getdata('REWARD')||'55'; //额外签到奖励，默认55为兑换0.2元额度，44为兑换1天VIP，42为兑换1888金币
 const dianshijia_API = 'http://api.gaoqingdianshi.com/api'
-let tokenArr = [], DsjurlArr = [], DrawalArr = [],todrawal="";
+let tokenArr = [], DsjurlArr = [], DrawalArr = [],drawalCode="";
 if ($.isNode()) {
   if (process.env.DSJ_HEADERS && process.env.DSJ_HEADERS.indexOf('#') > -1) {
   Dsjheaders = process.env.DSJ_HEADERS.split('#');
@@ -113,8 +113,7 @@ if (isGetCookie = typeof $request !== 'undefined') {
   if (drawalVal != undefined){
      await Withdrawal()
    } else {
-       detail += `【金额提现】❌ 请获取提现地址 \n`
-  };// 金额提现
+       detail += `【金额提现】❌ 请获取提现地址 \n`}; // 金额提现
   await run();
   await tasks(); // 任务状态
   await getGametime();// 游戏时长
@@ -122,7 +121,7 @@ if (isGetCookie = typeof $request !== 'undefined') {
   await cash();       // 现金
   await cashlist();   // 现金列表
   await coinlist();   // 金币列表
-  if ($.isNode() && todrawal == '0') {
+  if ($.isNode() && drawalCode == '0') {
        await notify.sendNotify($.name+"提现成功", subTitle+'\n'+ detail)
      }
     }
@@ -373,7 +372,6 @@ function wakeup() {
  })
 }
 
-
 function coinlist() {
  return new Promise((resolve, reject) => {
     setTimeout(() =>  {
@@ -433,12 +431,11 @@ function coinlist() {
    detail += `【任务统计】共完成${i+1}次任务🌷`
    }
    $.msg($.name+`  `+sleeping, subTitle, detail)
-    resolve()
   } catch(e) {
    console.log(`获取任务金币列表失败，错误代码${e}+ \n响应数据:${data}`)
-     $.msg($.name+`  `+sleeping, subTitle, detail)
-      resolve()
+     $.msg($.name+` 获取金币详情失败 `, subTitle, detail)
      }
+     resolve()
     })
    },1000)
  })
@@ -471,12 +468,12 @@ function getCUpcoin() {
 function Withdrawal() {
   return new Promise((resolve, reject) => {
     $.get({url: drawalVal, headers: JSON.parse(signheaderVal)}, (error, response, data) => {
-    $.log(`金币随机兑换 : ${data}\n`)
-      let result = JSON.parse(data),
-         todrawal = result.errCode;
-     if (todrawal == 0) {
-      detail += `【金额提现】✅ 到账`+result.data.price/100+`元 🌷\n`
-    } 
+     if(logs)$.log(`金币随机兑换 : ${data}\n`)
+      let todrawal = JSON.parse(data);
+       if (todrawal.errCode == 0) {
+         detail += `【金额提现】✅ 到账`+todrawal.data.price/100+`元 🌷\n`
+         drawalCode = todrawal.errCode
+      } 
     resolve()
    })
  })
