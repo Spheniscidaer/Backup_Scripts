@@ -6,7 +6,7 @@ name: 中青看点_Backup
 on:
   workflow_dispatch:
   schedule:
-     - cron: '6/12 * * * *'
+     - cron: '6/12 10-15 * * *'
   watch:
     types: started
 
